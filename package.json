@@ -9,8 +9,9 @@
   "scripts": {
     "start": "nodemon index.ts",
     "build": "tsc --project ./",
-    "test": "jest",
-    "migrate": "npx sequelize-cli db:migrate"
+    "test": "jest --detectOpenHandles",
+    "migrate": "npx sequelize-cli db:migrate",
+    "pretest": "npx sequelize-cli db:migrate --env test"
   },
   "private": false,
   "dependencies": {
@@ -48,7 +49,7 @@
       }
     },
     "testMatch": [
-      "**/__tests__/*.+(ts|tsx|js)"
+      "**/__tests__/routes/management/*.+(ts|tsx|js)"
     ],
     "testPathIgnorePatterns": ["build"]
   }
