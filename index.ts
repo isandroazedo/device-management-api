@@ -1,12 +1,15 @@
 import express from 'express';
 import router from './routes';
-import managementRouter from './routes/v1/management/routes';
+import managementRouter from './routes/management/routes';
 
 const app = express();
 const PORT = 8000;
 
 app.use('/', router);
 app.use('/management', managementRouter);
+app.use(express.json()) // for parsing application/json
+app.use(express.urlencoded({ extended: true })) // for parsing application/x-www-form-urlencoded
+
 const server = app.listen(PORT, () => console.log('Server is running.'));
 
 export default server;

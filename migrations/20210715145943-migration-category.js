@@ -12,7 +12,10 @@ module.exports = {
       name: {
         type: Sequelize.STRING(128),
         allowNull: false
-      }
+      },
+      // Timestamps
+      createdAt: Sequelize.DATE,
+      updatedAt: Sequelize.DATE,
     })
   },
 
