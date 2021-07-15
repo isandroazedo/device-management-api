@@ -19,5 +19,12 @@
     "database": "dm",
     "host": "db",
     "dialect": "mysql"
+  },
+  "ci": {
+    "username": "root",
+    "password": "root",
+    "database": "dm_test",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
   }
 }
