@@ -4,7 +4,7 @@
   "description": "API that manages devices",
   "main": "index.ts",
   "repository": "https://github.com/isandroazedo/device-management-api.git",
-  "author": "isandro.azedo@gmail.com",
+  "author": "isandroazedo",
   "license": "MIT",
   "scripts": {
     "start": "nodemon index.ts",
