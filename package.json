@@ -10,6 +10,7 @@
     "start": "nodemon index.ts",
     "build": "tsc --project ./",
     "test": "jest --detectOpenHandles",
+    "testci": "npx sequelize-cli db:migrate --env ci && export NODE_ENV=ci && jest --detectOpenHandles",
     "migrate": "npx sequelize-cli db:migrate",
     "pretest": "npx sequelize-cli db:migrate --env test"
   },
