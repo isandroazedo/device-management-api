@@ -4,12 +4,12 @@ import { CategoryService } from '../../management/services/category.service';
 const managementRouter = express.Router();
 const categoryService = new CategoryService();
 
-managementRouter.get('/categories', async (req: any, res: any) => {
+managementRouter.get('/category', async (req: any, res: any) => {
     const categories = categoryService.list();
     return categories.then((u) => res.json(u));
 });
 
-managementRouter.delete('/categories/:id', async (req: any, res: any) => {
+managementRouter.delete('/category/:id', async (req: any, res: any) => {
     const id = req.params.id;
     try {
         categoryService.delete(id)
