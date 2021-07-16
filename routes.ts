@@ -4,7 +4,10 @@ import cors from 'cors';
 const router = express.Router();
 
 router.use(cors({
-    origin: 'http://localhost:3000',
+    origin: [
+        'http://localhost:4200', 
+        'http://localhost:8080'
+    ],
     optionsSuccessStatus: 200
 }));
 

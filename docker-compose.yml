@@ -12,13 +12,21 @@ services:
         ports:
             - 3306:3306
     
-    adminer:
-        image: adminer
-        ports:
-            - 8080:8080
+    # adminer:
+    #     image: adminer
+    #     ports:
+    #         - 8080:8080
     
     api:
         image: github.com/isandroazedo/device-management-api
-        restart: always
+        depends_on: 
+            - db
         ports:
             - 8000:8000
+    
+    web:
+        image: github.com/isandroazedo/device-management-web
+        depends_on: 
+            - api
+        ports:
+            - 8080:80
