@@ -1,0 +1,9 @@
+FROM node:14.17.3-alpine
+
+ENV APP_PATH /usr/src/front
+
+WORKDIR $APP_PATH
+
+COPY package.json package-lock.json $APP_PATH/
+
+RUN npm ci
