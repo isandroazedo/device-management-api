@@ -13,7 +13,7 @@ afterAll(async () => {
 
 describe('Checking the registration of categories', () => {
 
-    const path = '/management/categories';
+    const path = '/management/category';
     let category: CategoryModel;
     
     beforeEach(async () => {
