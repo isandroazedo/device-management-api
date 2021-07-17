@@ -16,7 +16,10 @@ describe('Checking the registration of categories', () => {
     let category: CategoryModel;
     
     beforeEach(async () => {
-        await Category.sync({force: true});
+        await Category.destroy({
+            where: {},
+            truncate: true
+        });
         category = await Category.create({
             name: 'CAT1',
             createdAt: Date.now(),
@@ -43,5 +46,35 @@ describe('Checking the registration of categories', () => {
         const response = await request(server).delete(deletePath);
         expect(response.status).toEqual(404);
         expect(response.text).toEqual('Not found');
+    });
+
+    test('It should be possible to create a new category', async () => {
+        const data = {name: 'john'};
+        const res = await request(server)
+        .post(path)
+        .set('Accept', 'application/json')
+        .send(data)
+        .expect(201);
+        expect(res.body.name).toStrictEqual(data.name);        
+    });
+
+    test('It should not be possible to create a new category without a name', async () => {
+        const data = {name: null};
+        const res = await request(server)
+        .post(path)
+        .set('Accept', 'application/json')
+        .send(data)
+        .expect(400);
+        expect(res.text).toEqual("Category name is required");      
+    });
+
+    test('It should not be possible to create a new category with existing name', async () => {
+        const data = {name: 'CAT1'};
+        const res = await request(server)
+        .post(path)
+        .set('Accept', 'application/json')
+        .send(data)
+        .expect(400);
+        expect(res.text).toEqual("There is already a category with the same name");      
     });
 });
