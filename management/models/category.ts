@@ -9,6 +9,10 @@ export interface CategoryModel extends Sequelize.Model<CategoryModel, CategoryAd
     id: number
 }
 
+export interface CategoryViewModel extends CategoryModel, CategoryAddModel {
+
+}
+
 export const Category = sequelize.define<CategoryModel, CategoryAddModel>('category', {
     id: {
         type: Sequelize.INTEGER,
