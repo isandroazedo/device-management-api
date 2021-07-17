@@ -1,10 +1,12 @@
 import * as Sequelize from 'sequelize';
 import sequelize from '../../core/index';
+import { Category, CategoryViewModel } from './category';
 
 export interface DeviceAddModel {
-    category: number;
+    category: number | CategoryViewModel;
     color: string;
     partNumber: number;
+    categoryId: number;
 }
 
 export interface DeviceModel extends Sequelize.Model<DeviceModel, DeviceAddModel> {
@@ -21,11 +23,6 @@ export const Device = sequelize.define<DeviceModel, DeviceAddModel>('device', {
         autoIncrement: true,
         primaryKey: true
     },
-    category: {
-        type: Sequelize.INTEGER,
-        references: { model: 'category', key: 'id' },
-        allowNull: false
-    },
     color: {
         type: Sequelize.STRING(16),
         allowNull: false
@@ -39,3 +36,6 @@ export const Device = sequelize.define<DeviceModel, DeviceAddModel>('device', {
 }, {
     freezeTableName: true,
 });
+
+Category.hasMany(Device, { foreignKey: { allowNull: false } });
+Device.belongsTo(Category, { foreignKey: { allowNull: false } });

@@ -1,7 +1,7 @@
 import express from 'express';
 import { ValidationErrorItem } from 'sequelize/types';
 import { CategoryViewModel } from '../../management/models/category';
-import { DeviceViewModel } from '../../management/models/device';
+import { DeviceAddModel, DeviceViewModel } from '../../management/models/device';
 import { CategoryService } from '../../management/services/category.service';
 import { DeviceService } from '../../management/services/device.service';
 
@@ -48,14 +48,18 @@ managementRouter.get('/category', async (req: any, res: any) => {
 managementRouter.delete('/category/:id', async (req: any, res: any) => {
     const id = req.params.id;
     try {
-        categoryService.delete(id)
-            .then((count: number) => {
-                if (count > 0) {
-                    res.json(count);
-                } else {
-                    res.status(404).send('Not found');
-                }
-            });
+        const device = await deviceService.findOneByCategory(id);
+        if (!device)
+            categoryService.delete(id)
+                .then((count: number) => {
+                    if (count > 0) {
+                        res.json(count);
+                    } else {
+                        res.status(404).send('Not found');
+                    }
+                });
+        else
+            res.status(400).send('The category is associated with a device and cannot be removed.');
     } catch (error) {
         res.send(error.message);
     }
@@ -92,7 +96,18 @@ managementRouter.delete('/device/:id', async (req: any, res: any) => {
 });
 
 managementRouter.post('/device', async (req: any, res: any) => {
-    deviceService.create(req.body)
+    const categoryId = req.body.category;
+    if (categoryId) {
+        const cat = await categoryService.findById(categoryId);
+        if (!cat) {
+            res.status(400).send('Category not found');
+        }
+    }
+    const entity: DeviceAddModel = {
+        ...req.body,
+        "categoryId": req.body.category
+    }
+    deviceService.create(entity)
         .then((result: DeviceViewModel) => res.status(201).json(result))
         .catch((error: any) => handleError(error, res, 'Device'));
 });

@@ -3,7 +3,12 @@ import { CategoryDAO } from '../models/category.dao';
 import { BaseService } from './base.service';
 
 export class CategoryService extends BaseService<CategoryAddModel, CategoryViewModel, CategoryDAO> {
+
     constructor() {
         super(new CategoryDAO());
+    }
+
+    findById(categoryId: any): Promise<CategoryViewModel> {
+        return this.dao.findById(categoryId);
     }
 }

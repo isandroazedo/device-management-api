@@ -3,7 +3,12 @@ import { DeviceDAO } from "../models/device.dao";
 import { BaseService } from "./base.service";
 
 export class DeviceService extends BaseService<DeviceAddModel, DeviceViewModel, DeviceDAO> {
+
     constructor() {
         super(new DeviceDAO());
+    }
+
+    findOneByCategory(id: any): Promise<DeviceViewModel> {
+        return this.dao.findOneByCategory(id)
     }
 }
