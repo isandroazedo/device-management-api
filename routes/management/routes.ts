@@ -1,5 +1,6 @@
 import express from 'express';
 import { ValidationErrorItem } from 'sequelize/types';
+import { CategoryViewModel } from '../../management/models/category';
 import { DeviceViewModel } from '../../management/models/device';
 import { CategoryService } from '../../management/services/category.service';
 import { DeviceService } from '../../management/services/device.service';
@@ -62,10 +63,9 @@ managementRouter.delete('/category/:id', async (req: any, res: any) => {
 });
 
 managementRouter.post('/category', async (req: any, res: any) => {
+
     categoryService.create(req.body)
-        .then((result: any) => {
-            res.status(201).json(result);
-        })
+        .then((result: CategoryViewModel) => res.status(201).json(result))
         .catch((error: any) => handleError(error, res, 'Category'));
 });
 
