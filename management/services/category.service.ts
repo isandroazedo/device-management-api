@@ -4,8 +4,8 @@ export class CategoryService {
     async create(entity: CategoryModel) {
         return  Category.create(entity);
     }
-    async exists(id: number): Promise<CategoryModel> {
-        return Category.findById(id);
+    async get(id: number): Promise<CategoryModel> {
+        return Category.findOne(id);
     }
     async delete(id: number) {
         return Category.destroy({

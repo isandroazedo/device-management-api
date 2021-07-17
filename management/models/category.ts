@@ -20,4 +20,4 @@ export const Category = sequelize.define<CategoryModel, CategoryAddModel>('categ
     updatedAt: Sequelize.DATE,
 }, {
     freezeTableName: true,
-  })
+  });
