@@ -110,6 +110,7 @@ describe('Checking the registration of devices', () => {
         });
         device = await deviceDAO.create({
             category: category.id,
+            categoryId: category.id,
             color: 'WHITE',
             partNumber: 122312
         });
@@ -164,7 +165,7 @@ describe('Checking the registration of devices', () => {
             .set('Accept', 'application/json')
             .send(data)
             .expect(400);
-        expect(res.text).toEqual("The following fields cannot be null: category,color,partNumber");
+        expect(res.text).toEqual("The following fields cannot be null: color,partNumber,categoryId");
     });
 
     test('It should not be possible to create a new device with invalid color length', async () => {
