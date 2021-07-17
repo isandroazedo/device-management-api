@@ -5,8 +5,9 @@ const router = express.Router();
 
 router.use(cors({
     origin: [
-        'http://localhost:4200', 
-        'http://localhost:8080'
+        'http://dm:4200', 
+        'http://dm:8080', 
+        'http://dm'
     ],
     optionsSuccessStatus: 200
 }));
