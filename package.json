@@ -13,7 +13,7 @@
     "testci": "npx sequelize-cli db:migrate --env ci && export NODE_ENV=ci && jest --detectOpenHandles",
     "migrate": "npx sequelize-cli db:migrate",
     "pretest": "npx sequelize-cli db:migrate --env test",
-    "up": "node build/index.js"
+    "up": "npx sequelize-cli db:migrate && node build/index.js"
   },
   "private": false,
   "dependencies": {
