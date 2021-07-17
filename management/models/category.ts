@@ -1,5 +1,6 @@
 import * as Sequelize from 'sequelize'
 import sequelize from '../../core/index'
+import { Device } from './device';
 
 export interface CategoryAddModel {
     name: string
@@ -24,4 +25,4 @@ export const Category = sequelize.define<CategoryModel, CategoryAddModel>('categ
     updatedAt: Sequelize.DATE,
 }, {
     freezeTableName: true,
-  });
+  }); 
