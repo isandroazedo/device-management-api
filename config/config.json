@@ -1,14 +1,14 @@
 {
   "development": {
     "username": "root",
-    "password": "pwd1212",
+    "password": "pwd121212",
     "database": "dm",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },
   "test": {
     "username": "root",
-    "password": "pwd1212",
+    "password": "pwd121212",
     "database": "dm_test",
     "host": "127.0.0.1",
     "dialect": "mysql"
@@ -25,13 +25,6 @@
     "password": "root",
     "database": "dm_test",
     "host": "127.0.0.1",
-    "dialect": "mysql"
-  },
-  "aws": {
-    "username": "root",
-    "password": "pwd121212",
-    "database": "dm",
-    "host": "device-management.cehhxv0ik7jo.us-east-2.rds.amazonaws.com",
     "dialect": "mysql"
   }
 }

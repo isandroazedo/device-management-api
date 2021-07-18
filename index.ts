@@ -11,6 +11,6 @@ app.use(express.urlencoded({ extended: true })) // for parsing application/x-www
 app.use('/', router);
 app.use('/management', managementRouter);
 
-const server = app.listen(PORT, () => console.log('Server is running.'));
+const server = app.listen(PORT, () => console.log('The server is running and listening on port 8000'));
 
 export default server;

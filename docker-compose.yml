@@ -6,17 +6,12 @@ services:
         image: github.com/isandroazedo/device-management-db
         command: --default-authentication-plugin=mysql_native_password
         environment: 
-            MYSQL_ROOT_PASSWORD: pwd1212
+            MYSQL_ROOT_PASSWORD: pwd121212
         volumes: 
             - ./datadir:/var/lib/mysql
         ports:
             - 3306:3306
-    
-    # adminer:
-    #     image: adminer
-    #     ports:
-    #         - 8080:8080
-    
+        
     api:
         image: github.com/isandroazedo/device-management-api
         depends_on: 
@@ -29,4 +24,4 @@ services:
         depends_on: 
             - api
         ports:
-            - 8080:80
+            - 80:80

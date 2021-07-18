@@ -10,4 +10,6 @@ RUN yarn build
 
 COPY config build/config/
 
-CMD yarn up
+RUN chmod +x wait-for-it.sh
+
+CMD ./wait-for-it.sh db:3306 -s -t 30000 -- echo "db is up" && yarn up
