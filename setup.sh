@@ -28,4 +28,4 @@ export NODE_ENV=development && sudo yarn install && sudo yarn build && sudo cp -
 
 cd ~/git/dm/back
 export NODE_ENV=development && sudo yarn install && sudo yarn build && sudo cp -R config build/config \
-    && npx sequelize-cli db:migrate && nohup node build/index.js > output.log
+    && npx sequelize-cli db:migrate && nohup node build/index.js &
