@@ -15,7 +15,7 @@
   },
   "production": {
     "username": "root",
-    "password": "pwd1212",
+    "password": "pwd121212",
     "database": "dm",
     "host": "db",
     "dialect": "mysql"
