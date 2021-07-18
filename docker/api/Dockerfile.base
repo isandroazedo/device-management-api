@@ -1,6 +1,6 @@
 FROM node:14.17.3-alpine
 
-ENV APP_PATH /usr/src/front
+ENV APP_PATH /usr/src/back
 
 WORKDIR $APP_PATH
 
