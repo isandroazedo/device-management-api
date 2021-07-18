@@ -21,7 +21,7 @@ sudo mkdir -p ./dm/front && sudo mkdir -p ./dm/back \
     && git clone https://github.com/isandroazedo/device-management-web.git ./dm/front \
     && git clone https://github.com/isandroazedo/device-management-api.git ./dm/back \
     && cd ./dm/back \
-    && make db-image
+    && make db-image \
     && make base-image \
     && make image \
     && cd ../front \
