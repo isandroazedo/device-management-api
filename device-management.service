@@ -1,0 +1,15 @@
+[Unit]
+Description=Device Management Application
+After=network-online.target
+
+[Service]
+Restart=on-failure
+User=root
+Group=nogroup
+Environment=PATH=/usr/bin:/usr/local/bin
+Environment=NODE_ENV=production
+WorkingDirectory=/home/ubuntu/git/dm/device-management-api/build
+ExecStart=/usr/bin/node /home/ubuntu/git/dm/device-management-api/build/index.js
+
+[Install]
+WantedBy=multi-user.target
